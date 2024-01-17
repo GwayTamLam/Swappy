@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Swappy.Server.Configurations.Entities;
 using Swappy.Server.Models;
 using Swappy.Shared.Domain;
 
@@ -23,25 +24,35 @@ namespace Swappy.Server.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Payment> Payments { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(builder);
+            builder.ApplyConfiguration(new CartSeedConfiguration());
+            builder.ApplyConfiguration(new CartItemsSeedConfiguration());
+            builder.ApplyConfiguration(new CategorySeedConfiguration());
+            builder.ApplyConfiguration(new MessageSeedConfiguration());
+            builder.ApplyConfiguration(new OrderSeedConfiguration());
+            builder.ApplyConfiguration(new OrderItemsSeedConfiguration());
+            builder.ApplyConfiguration(new PaymentSeedConfiguration());
+            builder.ApplyConfiguration(new ProductSeedConfiguration());
+            builder.ApplyConfiguration(new UserSeedConfiguration());
+
 
             // Configure the relationship between Cart and User
-            modelBuilder.Entity<Cart>()
+            builder.Entity<Cart>()
                 .HasOne(c => c.User)
                 .WithMany()
                 .HasForeignKey(c => c.UserID)
                 .OnDelete(DeleteBehavior.Restrict); // or use DeleteBehavior.NoAction
 
             // Configure the relationship between Cart and Product
-            modelBuilder.Entity<Cart>()
+            builder.Entity<Cart>()
                 .HasOne(c => c.Product)
                 .WithMany()
                 .HasForeignKey(c => c.ProductID)
                 .OnDelete(DeleteBehavior.Restrict); // or use DeleteBehavior.NoAction
 
-            modelBuilder.Entity<Payment>()
+            builder.Entity<Payment>()
                 .HasOne(p => p.User)
                 .WithMany()
                 .HasForeignKey(p => p.UserID)
