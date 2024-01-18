@@ -26,7 +26,7 @@ namespace Swappy.Server.Configurations.Entities
                 {
                     Id = 2,
                     OrderID = 2,
-                    UserID = 2,
+                    UserID = 1,
                     TotalPrice = 15.99,
                     PaymentMethod = "PayPal",
                     DateCreated = DateTime.Now,

@@ -5,12 +5,12 @@ using Swappy.Shared.Domain;
 namespace Swappy.Server.Configurations.Entities
 {
     
-    public class CartItemsSeedConfiguration : IEntityTypeConfiguration<CartItems>
+    public class CartItemsSeedConfiguration : IEntityTypeConfiguration<CartItem>
     {
-        public void Configure(EntityTypeBuilder<CartItems> builder)
+        public void Configure(EntityTypeBuilder<CartItem> builder)
         {
             builder.HasData(
-                new CartItems
+                new CartItem
                 {
                     Id = 1,
                     ProductId = 1,
@@ -21,7 +21,7 @@ namespace Swappy.Server.Configurations.Entities
                     CreatedBy = "System",
                     UpdatedBy = "System"
                 },
-                new CartItems
+                new CartItem
                 {
                     Id = 2,
                     ProductId = 2,

@@ -5,23 +5,23 @@ using System;
 
 namespace Swappy.Server.Configurations.Entities
 {
-    public class OrderItemsSeedConfiguration : IEntityTypeConfiguration<OrderItems>
+    public class OrderItemsSeedConfiguration : IEntityTypeConfiguration<OrderItem>
     {
-        public void Configure(EntityTypeBuilder<OrderItems> builder)
+        public void Configure(EntityTypeBuilder<OrderItem> builder)
         {
             builder.HasData(
-                new OrderItems
+                new OrderItem
                 {
                     Id = 1,
                     ProductId = 1,
-                    ProductQuantity = 2,
+                    ProductQuantity = 1,
                     CartId = 1,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",
                     UpdatedBy = "System"
                 },
-                new OrderItems
+                new OrderItem
                 {
                     Id = 2,
                     ProductId = 2,

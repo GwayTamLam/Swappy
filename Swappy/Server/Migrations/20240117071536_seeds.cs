@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Swappy.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class AddApplicationTables : Migration
+    public partial class seeds : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -347,6 +349,68 @@ namespace Swappy.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CartItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    ProductQuantity = table.Column<int>(type: "int", nullable: false),
+                    CartId = table.Column<int>(type: "int", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CartItems_Carts_CartId",
+                        column: x => x.CartId,
+                        principalTable: "Carts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CartItems_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    ProductQuantity = table.Column<int>(type: "int", nullable: false),
+                    CartId = table.Column<int>(type: "int", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Carts_CartId",
+                        column: x => x.CartId,
+                        principalTable: "Carts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -407,6 +471,79 @@ namespace Swappy.Server.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Description", "Name", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4262), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4263), "Electronic gadgets and devices", "Electronics", "System" },
+                    { 2, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4264), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4265), "Fashion and apparel", "Clothing", "System" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Bio", "CreatedBy", "DateCreated", "DateUpdated", "Email", "Name", "PhoneNumber", "UpdatedBy", "UserName" },
+                values: new object[] { 1, "I am Star Boy", "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5260), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5261), "starboy69@gmail.com", "Star Boy", "1234567890", "System", "starboy69" });
+
+            migrationBuilder.InsertData(
+                table: "Messages",
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "MessageContent", "UpdatedBy", "UserID" },
+                values: new object[] { 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4414), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4414), "I love R Shwee", "System", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "CategoryID", "CreatedBy", "DateCreated", "DateUpdated", "Description", "Name", "Price", "ProductDimension", "ProductPicture", "ProductQuantity", "UpdatedBy", "UserID" },
+                values: new object[,]
+                {
+                    { 1, 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5100), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5101), "Description for Product 1", "Product 1", 29.989999999999998, "10x10x5", "url-to-product-image-1", 10, "System", 1 },
+                    { 2, 2, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5103), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5103), "Description for Product 2", "Product 2", 19.989999999999998, "8x8x4", "url-to-product-image-2", 15, "System", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Carts",
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "ProductID", "ProductQuantity", "TotalPrice", "UpdatedBy", "UserID" },
+                values: new object[,]
+                {
+                    { 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(3770), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(3780), 1, 2, 20.989999999999998, "System", 1 },
+                    { 2, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(3781), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(3782), 2, 1, 15.99, "System", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "CartItems",
+                columns: new[] { "Id", "CartId", "CreatedBy", "DateCreated", "DateUpdated", "ProductId", "ProductQuantity", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4098), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4098), 1, 2, "System" },
+                    { 2, 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4100), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4100), 2, 1, "System" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "OrderItems",
+                columns: new[] { "Id", "CartId", "CreatedBy", "DateCreated", "DateUpdated", "ProductId", "ProductQuantity", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4776), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4777), 1, 1, "System" },
+                    { 2, 2, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4778), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4779), 2, 1, "System" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Orders",
+                columns: new[] { "Id", "CartID", "CreatedBy", "DateCreated", "DateUpdated", "UpdatedBy", "UserID" },
+                values: new object[,]
+                {
+                    { 1, 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4575), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4575), "System", 1 },
+                    { 2, 2, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4576), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4577), "System", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Payments",
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "OrderID", "PaymentMethod", "TotalPrice", "UpdatedBy", "UserID" },
+                values: new object[,]
+                {
+                    { 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4943), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4943), 1, "Credit Card", 20.989999999999998, "System", 1 },
+                    { 2, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4945), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4945), 2, "PayPal", 15.99, "System", 1 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -447,6 +584,16 @@ namespace Swappy.Server.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CartItems_CartId",
+                table: "CartItems",
+                column: "CartId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartItems_ProductId",
+                table: "CartItems",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Carts_ProductID",
                 table: "Carts",
                 column: "ProductID");
@@ -476,6 +623,16 @@ namespace Swappy.Server.Migrations
                 name: "IX_Messages_UserID",
                 table: "Messages",
                 column: "UserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_CartId",
+                table: "OrderItems",
+                column: "CartId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_ProductId",
+                table: "OrderItems",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_CartID",
@@ -547,6 +704,9 @@ namespace Swappy.Server.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "CartItems");
+
+            migrationBuilder.DropTable(
                 name: "DeviceCodes");
 
             migrationBuilder.DropTable(
@@ -554,6 +714,9 @@ namespace Swappy.Server.Migrations
 
             migrationBuilder.DropTable(
                 name: "Messages");
+
+            migrationBuilder.DropTable(
+                name: "OrderItems");
 
             migrationBuilder.DropTable(
                 name: "Payments");

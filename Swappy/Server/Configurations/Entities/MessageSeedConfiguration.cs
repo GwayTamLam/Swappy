@@ -14,6 +14,7 @@ namespace Swappy.Server.Configurations.Entities
                 {
                     Id = 1,
                     MessageContent = "I love R Shwee",
+                    UserID = 1,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",

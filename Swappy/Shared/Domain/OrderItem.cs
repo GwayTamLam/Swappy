@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Swappy.Shared.Domain
 {
-    public class OrderItems : BaseDomainModel
+    public class OrderItem : BaseDomainModel
     {
         public virtual Product? Product { get; set; }
         public int ProductId { get; set; }

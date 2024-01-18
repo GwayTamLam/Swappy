@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Swappy.Server.Data;
 using Swappy.Server.Models;
 using Microsoft.AspNetCore.Identity;
+using Swappy.Server.IRepository;
+using Swappy.Server.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,8 @@ builder.Services.AddIdentityServer()
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();
+
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();

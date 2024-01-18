@@ -35,7 +35,7 @@ namespace Swappy.Server.Configurations.Entities
                     ProductQuantity = 15,
                     ProductDimension = "8x8x4",
                     ProductPicture = "url-to-product-image-2",
-                    UserID = 2,
+                    UserID = 1,
                     CategoryID = 2,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,

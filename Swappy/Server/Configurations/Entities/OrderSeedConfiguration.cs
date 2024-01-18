@@ -23,7 +23,7 @@ namespace Swappy.Server.Configurations.Entities
                 new Order
                 {
                     Id = 2,
-                    UserID = 2,
+                    UserID = 1,
                     CartID = 2,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
