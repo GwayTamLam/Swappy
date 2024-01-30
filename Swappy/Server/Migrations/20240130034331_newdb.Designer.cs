@@ -12,15 +12,15 @@ using Swappy.Server.Data;
 namespace Swappy.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240117071536_seeds")]
-    partial class seeds
+    [Migration("20240130034331_newdb")]
+    partial class newdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.12")
+                .HasAnnotation("ProductVersion", "7.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -413,35 +413,9 @@ namespace Swappy.Server.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Carts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(3770),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(3780),
-                            ProductID = 1,
-                            ProductQuantity = 2,
-                            TotalPrice = 20.989999999999998,
-                            UpdatedBy = "System",
-                            UserID = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(3781),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(3782),
-                            ProductID = 2,
-                            ProductQuantity = 1,
-                            TotalPrice = 15.99,
-                            UpdatedBy = "System",
-                            UserID = 1
-                        });
                 });
 
-            modelBuilder.Entity("Swappy.Shared.Domain.CartItems", b =>
+            modelBuilder.Entity("Swappy.Shared.Domain.CartItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -477,30 +451,6 @@ namespace Swappy.Server.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("CartItems");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CartId = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4098),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4098),
-                            ProductId = 1,
-                            ProductQuantity = 2,
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CartId = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4100),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4100),
-                            ProductId = 2,
-                            ProductQuantity = 1,
-                            UpdatedBy = "System"
-                        });
                 });
 
             modelBuilder.Entity("Swappy.Shared.Domain.Category", b =>
@@ -538,8 +488,8 @@ namespace Swappy.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4262),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4263),
+                            DateCreated = new DateTime(2024, 1, 30, 11, 43, 31, 481, DateTimeKind.Local).AddTicks(9382),
+                            DateUpdated = new DateTime(2024, 1, 30, 11, 43, 31, 481, DateTimeKind.Local).AddTicks(9412),
                             Description = "Electronic gadgets and devices",
                             Name = "Electronics",
                             UpdatedBy = "System"
@@ -548,8 +498,8 @@ namespace Swappy.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4264),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4265),
+                            DateCreated = new DateTime(2024, 1, 30, 11, 43, 31, 481, DateTimeKind.Local).AddTicks(9414),
+                            DateUpdated = new DateTime(2024, 1, 30, 11, 43, 31, 481, DateTimeKind.Local).AddTicks(9414),
                             Description = "Fashion and apparel",
                             Name = "Clothing",
                             UpdatedBy = "System"
@@ -587,18 +537,6 @@ namespace Swappy.Server.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Messages");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4414),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4414),
-                            MessageContent = "I love R Shwee",
-                            UpdatedBy = "System",
-                            UserID = 1
-                        });
                 });
 
             modelBuilder.Entity("Swappy.Shared.Domain.Order", b =>
@@ -634,31 +572,9 @@ namespace Swappy.Server.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Orders");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CartID = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4575),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4575),
-                            UpdatedBy = "System",
-                            UserID = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CartID = 2,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4576),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4577),
-                            UpdatedBy = "System",
-                            UserID = 1
-                        });
                 });
 
-            modelBuilder.Entity("Swappy.Shared.Domain.OrderItems", b =>
+            modelBuilder.Entity("Swappy.Shared.Domain.OrderItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -694,30 +610,6 @@ namespace Swappy.Server.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderItems");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CartId = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4776),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4777),
-                            ProductId = 1,
-                            ProductQuantity = 1,
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CartId = 2,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4778),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4779),
-                            ProductId = 2,
-                            ProductQuantity = 1,
-                            UpdatedBy = "System"
-                        });
                 });
 
             modelBuilder.Entity("Swappy.Shared.Domain.Payment", b =>
@@ -759,32 +651,6 @@ namespace Swappy.Server.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Payments");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4943),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4943),
-                            OrderID = 1,
-                            PaymentMethod = "Credit Card",
-                            TotalPrice = 20.989999999999998,
-                            UpdatedBy = "System",
-                            UserID = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4945),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4945),
-                            OrderID = 2,
-                            PaymentMethod = "PayPal",
-                            TotalPrice = 15.99,
-                            UpdatedBy = "System",
-                            UserID = 1
-                        });
                 });
 
             modelBuilder.Entity("Swappy.Shared.Domain.Product", b =>
@@ -838,40 +704,6 @@ namespace Swappy.Server.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryID = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5100),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5101),
-                            Description = "Description for Product 1",
-                            Name = "Product 1",
-                            Price = 29.989999999999998,
-                            ProductDimension = "10x10x5",
-                            ProductPicture = "url-to-product-image-1",
-                            ProductQuantity = 10,
-                            UpdatedBy = "System",
-                            UserID = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryID = 2,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5103),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5103),
-                            Description = "Description for Product 2",
-                            Name = "Product 2",
-                            Price = 19.989999999999998,
-                            ProductDimension = "8x8x4",
-                            ProductPicture = "url-to-product-image-2",
-                            ProductQuantity = 15,
-                            UpdatedBy = "System",
-                            UserID = 1
-                        });
                 });
 
             modelBuilder.Entity("Swappy.Shared.Domain.User", b =>
@@ -919,8 +751,8 @@ namespace Swappy.Server.Migrations
                             Id = 1,
                             Bio = "I am Star Boy",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5260),
-                            DateUpdated = new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5261),
+                            DateCreated = new DateTime(2024, 1, 30, 11, 43, 31, 481, DateTimeKind.Local).AddTicks(9844),
+                            DateUpdated = new DateTime(2024, 1, 30, 11, 43, 31, 481, DateTimeKind.Local).AddTicks(9844),
                             Email = "starboy69@gmail.com",
                             Name = "Star Boy",
                             PhoneNumber = "1234567890",
@@ -999,7 +831,7 @@ namespace Swappy.Server.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Swappy.Shared.Domain.CartItems", b =>
+            modelBuilder.Entity("Swappy.Shared.Domain.CartItem", b =>
                 {
                     b.HasOne("Swappy.Shared.Domain.Cart", "Cart")
                         .WithMany()
@@ -1048,7 +880,7 @@ namespace Swappy.Server.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Swappy.Shared.Domain.OrderItems", b =>
+            modelBuilder.Entity("Swappy.Shared.Domain.OrderItem", b =>
                 {
                     b.HasOne("Swappy.Shared.Domain.Cart", "Cart")
                         .WithMany()

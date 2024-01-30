@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Swappy.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class seeds : Migration
+    public partial class newdb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -476,73 +476,14 @@ namespace Swappy.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Description", "Name", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4262), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4263), "Electronic gadgets and devices", "Electronics", "System" },
-                    { 2, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4264), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4265), "Fashion and apparel", "Clothing", "System" }
+                    { 1, "System", new DateTime(2024, 1, 30, 11, 43, 31, 481, DateTimeKind.Local).AddTicks(9382), new DateTime(2024, 1, 30, 11, 43, 31, 481, DateTimeKind.Local).AddTicks(9412), "Electronic gadgets and devices", "Electronics", "System" },
+                    { 2, "System", new DateTime(2024, 1, 30, 11, 43, 31, 481, DateTimeKind.Local).AddTicks(9414), new DateTime(2024, 1, 30, 11, 43, 31, 481, DateTimeKind.Local).AddTicks(9414), "Fashion and apparel", "Clothing", "System" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Bio", "CreatedBy", "DateCreated", "DateUpdated", "Email", "Name", "PhoneNumber", "UpdatedBy", "UserName" },
-                values: new object[] { 1, "I am Star Boy", "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5260), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5261), "starboy69@gmail.com", "Star Boy", "1234567890", "System", "starboy69" });
-
-            migrationBuilder.InsertData(
-                table: "Messages",
-                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "MessageContent", "UpdatedBy", "UserID" },
-                values: new object[] { 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4414), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4414), "I love R Shwee", "System", 1 });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "Id", "CategoryID", "CreatedBy", "DateCreated", "DateUpdated", "Description", "Name", "Price", "ProductDimension", "ProductPicture", "ProductQuantity", "UpdatedBy", "UserID" },
-                values: new object[,]
-                {
-                    { 1, 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5100), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5101), "Description for Product 1", "Product 1", 29.989999999999998, "10x10x5", "url-to-product-image-1", 10, "System", 1 },
-                    { 2, 2, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5103), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(5103), "Description for Product 2", "Product 2", 19.989999999999998, "8x8x4", "url-to-product-image-2", 15, "System", 1 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Carts",
-                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "ProductID", "ProductQuantity", "TotalPrice", "UpdatedBy", "UserID" },
-                values: new object[,]
-                {
-                    { 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(3770), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(3780), 1, 2, 20.989999999999998, "System", 1 },
-                    { 2, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(3781), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(3782), 2, 1, 15.99, "System", 1 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "CartItems",
-                columns: new[] { "Id", "CartId", "CreatedBy", "DateCreated", "DateUpdated", "ProductId", "ProductQuantity", "UpdatedBy" },
-                values: new object[,]
-                {
-                    { 1, 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4098), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4098), 1, 2, "System" },
-                    { 2, 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4100), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4100), 2, 1, "System" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "OrderItems",
-                columns: new[] { "Id", "CartId", "CreatedBy", "DateCreated", "DateUpdated", "ProductId", "ProductQuantity", "UpdatedBy" },
-                values: new object[,]
-                {
-                    { 1, 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4776), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4777), 1, 1, "System" },
-                    { 2, 2, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4778), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4779), 2, 1, "System" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Orders",
-                columns: new[] { "Id", "CartID", "CreatedBy", "DateCreated", "DateUpdated", "UpdatedBy", "UserID" },
-                values: new object[,]
-                {
-                    { 1, 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4575), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4575), "System", 1 },
-                    { 2, 2, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4576), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4577), "System", 1 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Payments",
-                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "OrderID", "PaymentMethod", "TotalPrice", "UpdatedBy", "UserID" },
-                values: new object[,]
-                {
-                    { 1, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4943), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4943), 1, "Credit Card", 20.989999999999998, "System", 1 },
-                    { 2, "System", new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4945), new DateTime(2024, 1, 17, 15, 15, 36, 223, DateTimeKind.Local).AddTicks(4945), 2, "PayPal", 15.99, "System", 1 }
-                });
+                values: new object[] { 1, "I am Star Boy", "System", new DateTime(2024, 1, 30, 11, 43, 31, 481, DateTimeKind.Local).AddTicks(9844), new DateTime(2024, 1, 30, 11, 43, 31, 481, DateTimeKind.Local).AddTicks(9844), "starboy69@gmail.com", "Star Boy", "1234567890", "System", "starboy69" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

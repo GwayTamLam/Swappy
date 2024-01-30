@@ -29,14 +29,14 @@ namespace Swappy.Server.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.ApplyConfiguration(new CartSeedConfiguration());
-            builder.ApplyConfiguration(new CartItemsSeedConfiguration());
+            //builder.ApplyConfiguration(new CartSeedConfiguration());
+            //builder.ApplyConfiguration(new CartItemsSeedConfiguration());
             builder.ApplyConfiguration(new CategorySeedConfiguration());
-            builder.ApplyConfiguration(new MessageSeedConfiguration());
-            builder.ApplyConfiguration(new OrderSeedConfiguration());
-            builder.ApplyConfiguration(new OrderItemsSeedConfiguration());
-            builder.ApplyConfiguration(new PaymentSeedConfiguration());
-            builder.ApplyConfiguration(new ProductSeedConfiguration());
+            //builder.ApplyConfiguration(new MessageSeedConfiguration());
+            //builder.ApplyConfiguration(new OrderSeedConfiguration());
+            //builder.ApplyConfiguration(new OrderItemsSeedConfiguration());
+            //builder.ApplyConfiguration(new PaymentSeedConfiguration());
+            //builder.ApplyConfiguration(new ProductSeedConfiguration());
             builder.ApplyConfiguration(new UserSeedConfiguration());
 
 
