@@ -10,10 +10,14 @@ namespace Swappy.Shared.Domain
     public class CartItem : BaseDomainModel
     {
         public virtual Product? Product { get; set; }
-        public int ProductId { get; set; }
-        public int ProductQuantity { get; set; }
-        public virtual Cart? Cart { get; set; }
-        public int CartId { get; set; }
+        public int ProductID { get; set; }
+        public virtual User? User { get; set; }
+        public int UserId { get; set; }
+        public virtual Order? Order { get; set; }
+        public int? OrderID { get; set; }
+        public int? Quantity { get; set; }
+
 
     }
 }
+ 

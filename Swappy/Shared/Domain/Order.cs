@@ -10,8 +10,8 @@ namespace Swappy.Shared.Domain
     {
         public virtual User? User { get; set; }
         public int UserID { get; set; }
-        public virtual Cart? Cart { get; set; }
-        public int CartID { get; set; }
+        
+        public decimal TotalAmount { get; set; }
 
     }
 }

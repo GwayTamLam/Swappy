@@ -23,8 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Cart\" />
-    <Folder Include="Pages\Message\" />
+    <Folder Include="Pages\Order\" />
   </ItemGroup>
 
 </Project>

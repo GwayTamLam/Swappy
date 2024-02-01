@@ -12,13 +12,13 @@ namespace Swappy.Server.IRepository
     {
         Task Save(HttpContext httpContext);
         IGenericRepository<User> Users { get; }
-        IGenericRepository<Cart> Carts { get; }
+        //IGenericRepository<Cart> Carts { get; }
         IGenericRepository<CartItem> CartItems { get; }
         IGenericRepository<Category> Categories { get; }
-        IGenericRepository<Message> Messages { get; }
+        //IGenericRepository<Message> Messages { get; }
         IGenericRepository<Order> Orders { get; }
-        IGenericRepository<OrderItem> OrderItems { get; }
-        IGenericRepository<Payment> Payments { get; }
+        //IGenericRepository<OrderItem> OrderItems { get; }
+        //IGenericRepository<Payment> Payments { get; }
         IGenericRepository<Product> Products { get; }
 
     }

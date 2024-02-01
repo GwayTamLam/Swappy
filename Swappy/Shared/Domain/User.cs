@@ -13,5 +13,8 @@ namespace Swappy.Shared.Domain
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Bio { get; set;}
+
+        public virtual ICollection<Product>? Products { get; set;}
+        public virtual ICollection<CartItem>? CartItems { get; set; }
     }
 }
