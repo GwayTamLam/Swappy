@@ -1,22 +1,22 @@
-﻿@* @page "/users/"
+﻿@page "/cartitems/"
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
 
 
-<h3>Users</h3>
+<h3>Cart</h3>
 
-<a href="/users/create" class="btn btn-secondary">
+<a href="/cartitems/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
-    Create New User
+    Create New Cart Item
 
 </a>
 <br />
 <br />
 
-@if (Users == null)
+@if (CartItems == null)
 {
-    <div class="alert alert-info">Loading Users...</div>
+    <div class="alert alert-info">Loading Cart Items...</div>
 }
 else
 {
@@ -24,29 +24,29 @@ else
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Bio</th>
+                <th>Picture</th>
+                <th>Price</th>
+                <th>Quantity</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var user in Users)
+            @foreach (var cartitem in CartItems)
             {
                 <tr>
-                    <td>@user.Name</td>
-                    <td>@user.UserName</td>
-                    <td>@user.Email</td>
-                    <td>@user.Bio</td>
+                    <td>@cartitem.Product.Name</td>
+                    <td>@cartitem.Product.ProductPicture</td>
+                    <td>@cartitem.Product.Price</td>
+                    <td>@cartitem.Product.Quantity</td>
 
                     <td>
-                        <a href="/colours/view/@user.Id" class="btn btn-primary">
+                        <a href="/colours/view/@cartitem.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
                         </a>
-                        <a href="/colours/edit/@user.Id" class="btn btn-warning">
+                        <a href="/colours/edit/@cartitem.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
                         </a>
-                        <button class="btn btn-danger" @onclick="@(()=>Delete(user.Id))">
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(cartitem.Id))">
                             <span class="oi oi-delete"></span>
                         </button>
                     </td>
@@ -57,26 +57,25 @@ else
 }
 
 @code {
-    private List<User>? Users;
+    private List<CartItem>? CartItems;
 
     protected async override Task OnInitializedAsync()
     {
-        Users = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
+        CartItems = await _client.GetFromJsonAsync<List<CartItem>>($"{Endpoints.CartItemsEndpoint}");
     }
 
-    async Task Delete(int userId)
+    async Task Delete(int cartitemId)
     {
-        if (Users != null)
+        if (CartItems != null)
         {
-            var user = Users.First(q => q.Id == userId);
-            var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {user.Name}?");
+            var cartitem = CartItems.First(q => q.Id == cartitemId );
+            var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {cartitem.Product.Name}?");
             if (confirm)
             {
-                await _client.DeleteAsync($"{Endpoints.UsersEndpoint}/{userId}");
+                await _client.DeleteAsync($"{Endpoints.CartItemsEndpoint}/{cartitemId}");
                 await OnInitializedAsync();
             }
         }
     }
 
 }
- *@

@@ -12,7 +12,7 @@ using Swappy.Server.Data;
 namespace Swappy.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240131170222_new_db")]
+    [Migration("20240201042550_new_db")]
     partial class new_db
     {
         /// <inheritdoc />
@@ -452,8 +452,8 @@ namespace Swappy.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 1, 2, 22, 582, DateTimeKind.Local).AddTicks(7221),
-                            DateUpdated = new DateTime(2024, 2, 1, 1, 2, 22, 582, DateTimeKind.Local).AddTicks(7222),
+                            DateCreated = new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7911),
+                            DateUpdated = new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7912),
                             Description = "Electronic gadgets and devices",
                             Name = "Electronics",
                             UpdatedBy = "System"
@@ -462,8 +462,8 @@ namespace Swappy.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 1, 2, 22, 582, DateTimeKind.Local).AddTicks(7223),
-                            DateUpdated = new DateTime(2024, 2, 1, 1, 2, 22, 582, DateTimeKind.Local).AddTicks(7223),
+                            DateCreated = new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7913),
+                            DateUpdated = new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7914),
                             Description = "Fashion and apparel",
                             Name = "Clothing",
                             UpdatedBy = "System"
@@ -601,8 +601,8 @@ namespace Swappy.Server.Migrations
                             Id = 1,
                             Bio = "I am Star Boy",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 1, 2, 22, 582, DateTimeKind.Local).AddTicks(6898),
-                            DateUpdated = new DateTime(2024, 2, 1, 1, 2, 22, 582, DateTimeKind.Local).AddTicks(6909),
+                            DateCreated = new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7607),
+                            DateUpdated = new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7616),
                             Email = "starboy69@gmail.com",
                             Name = "Star Boy",
                             PhoneNumber = "1234567890",

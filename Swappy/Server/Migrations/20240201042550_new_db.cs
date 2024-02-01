@@ -358,14 +358,14 @@ namespace Swappy.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Description", "Name", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 2, 1, 1, 2, 22, 582, DateTimeKind.Local).AddTicks(7221), new DateTime(2024, 2, 1, 1, 2, 22, 582, DateTimeKind.Local).AddTicks(7222), "Electronic gadgets and devices", "Electronics", "System" },
-                    { 2, "System", new DateTime(2024, 2, 1, 1, 2, 22, 582, DateTimeKind.Local).AddTicks(7223), new DateTime(2024, 2, 1, 1, 2, 22, 582, DateTimeKind.Local).AddTicks(7223), "Fashion and apparel", "Clothing", "System" }
+                    { 1, "System", new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7911), new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7912), "Electronic gadgets and devices", "Electronics", "System" },
+                    { 2, "System", new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7913), new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7914), "Fashion and apparel", "Clothing", "System" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Bio", "CreatedBy", "DateCreated", "DateUpdated", "Email", "Name", "PhoneNumber", "UpdatedBy", "UserName" },
-                values: new object[] { 1, "I am Star Boy", "System", new DateTime(2024, 2, 1, 1, 2, 22, 582, DateTimeKind.Local).AddTicks(6898), new DateTime(2024, 2, 1, 1, 2, 22, 582, DateTimeKind.Local).AddTicks(6909), "starboy69@gmail.com", "Star Boy", "1234567890", "System", "starboy69" });
+                values: new object[] { 1, "I am Star Boy", "System", new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7607), new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7616), "starboy69@gmail.com", "Star Boy", "1234567890", "System", "starboy69" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
