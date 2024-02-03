@@ -2,7 +2,8 @@
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
-
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
 
 <h3>CartItems</h3>
 
@@ -84,6 +85,7 @@ else
 
     protected async override Task OnInitializedAsync()
     {
+        _interceptor.MonitorEvent();
         CartItems = await _client.GetFromJsonAsync<List<CartItem>>($"{Endpoints.CartItemsEndpoint}");
         Users = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
     }
@@ -118,6 +120,10 @@ else
                 await OnInitializedAsync();
             }
         }
+    }
+    public void Dispose()
+    {
+        _interceptor.DisposeEvent();
     }
 
 }

@@ -36,7 +36,7 @@ namespace Swappy.Server.Controllers
             //    return NotFound();
             //}
             //  return await _context.Users.ToListAsync();
-
+            //return NotFound();
             var users = await _unitOfWork.Users.GetAll();
 
             if (users == null)

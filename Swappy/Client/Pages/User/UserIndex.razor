@@ -2,6 +2,8 @@
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
 
 
 <h3>Users</h3>
@@ -20,7 +22,7 @@
 }
 else
 {
-    <table class="table table-reponsive">
+    <table class="table table-reponsive" id="usersTable">
         <thead>
             <tr>
                 <th>Name</th>
@@ -63,6 +65,7 @@ else
 
     protected async override Task OnInitializedAsync()
     {
+        _interceptor.MonitorEvent();
         Users = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
     }
 
@@ -78,6 +81,17 @@ else
                 await OnInitializedAsync();
             }
         }
+    }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#usersTable");
+    }
+
+    public void Dispose()
+    {
+        _interceptor.DisposeEvent();
+        js.InvokeVoidAsync("DataTablesDispose", "#usersTable");
     }
 
 }
