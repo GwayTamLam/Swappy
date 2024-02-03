@@ -40,10 +40,10 @@ else
                     <td>@user.Bio</td>
 
                     <td>
-                        <a href="/colours/view/@user.Id" class="btn btn-primary">
+                        <a href="/users/view/@user.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
                         </a>
-                        <a href="/colours/edit/@user.Id" class="btn btn-warning">
+                        <a href="/users/edit/@user.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
                         </a>
                         <button class="btn btn-danger" @onclick="@(()=>Delete(user.Id))">

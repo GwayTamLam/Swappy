@@ -16,6 +16,20 @@
 <br />
 <br />
 
+<select @onchange="OnUserSelected">
+    <option value="">All Users</option>
+    @if (Users != null)
+    {
+        @foreach (var user in Users)
+        {
+            <option value="@user.Id">@user.UserName</option>
+        }
+    }
+</select>
+
+<br />
+<br />
+
 @if (CartItems == null)
 {
     <div class="alert alert-info">Loading Products...</div>
@@ -64,11 +78,33 @@ else
 
 @code {
     private List<CartItem>? CartItems;
+    private List<User>? Users;
+    private int? SelectedUserId;
+
 
     protected async override Task OnInitializedAsync()
     {
         CartItems = await _client.GetFromJsonAsync<List<CartItem>>($"{Endpoints.CartItemsEndpoint}");
+        Users = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
     }
+
+    private async Task OnUserSelected(ChangeEventArgs e)
+    {
+        var userId = e.Value?.ToString();
+        SelectedUserId = !string.IsNullOrEmpty(userId) ? int.Parse(userId) : (int?)null;
+
+        // If you want to keep the original list intact and filter on demand, make sure to fetch the original list again or use a separate list for displaying.
+        // For simplicity, this code assumes re-fetching from the backend, but you could optimize by caching the original list.
+        CartItems = await _client.GetFromJsonAsync<List<CartItem>>($"{Endpoints.CartItemsEndpoint}");
+
+        if (SelectedUserId.HasValue)
+        {
+            CartItems = CartItems?.Where(ci => ci.User.Id == SelectedUserId.Value).ToList();
+        }
+
+        StateHasChanged(); // Notify the component that its state has changed and it needs to re-render.
+    }
+
 
     async Task Delete(int cartitemid)
     {
