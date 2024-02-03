@@ -60,10 +60,10 @@ else
                     <td>@cartitem.User.UserName</td>
 
                     <td>
-                        <a href="/colours/view/@cartitem.Id" class="btn btn-primary">
+                        <a href="/cartitems/view/@cartitem.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
                         </a>
-                        <a href="/colours/edit/@cartitem.Id" class="btn btn-warning">
+                        <a href="/cartitems/edit/@cartitem.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
                         </a>
                         <button class="btn btn-danger" @onclick="@(()=>Delete(cartitem.Id))">
