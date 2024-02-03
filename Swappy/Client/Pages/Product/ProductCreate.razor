@@ -1,0 +1,93 @@
+﻿@page "/products/create"
+@using System.Security.Claims
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3>Create New Product</h3>
+<br />
+<CategoryFormComponent ButtonText="Create Category" category="category" OnValidSubmit="CreateCategory" />
+
+<EditForm Model="@Product" OnValidSubmit="CreateProduct">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Name: </label>
+        <div>
+            <InputText @bind-Value="Product.Name" class="form-control" />
+            <ValidationMessage For="@(() => Product.Name)" />
+        </div>
+        <label>Description: </label>
+        <div>
+            <InputText @bind-Value="Product.Description" class="form-control" />
+            <ValidationMessage For="@(() => Product.Description)" />
+        </div>
+        <label>Price: </label>
+        <div>
+            <InputNumber @bind-Value="Product.Price" class="form-control" />
+            <ValidationMessage For="@(() => Product.Price)" />
+        </div>
+        <label>Quantity: </label>
+        <div>
+            <InputNumber @bind-Value="Product.Quantity" class="form-control" />
+            <ValidationMessage For="@(() => Product.Quantity)" />
+        </div>
+        <label>Dimension: </label>
+        <div>
+            <InputText @bind-Value="Product.ProductDimension" class="form-control" />
+            <ValidationMessage For="@(() => Product.ProductDimension)" />
+        </div>
+        <label>Picture: </label>
+        <div>
+            <InputText @bind-Value="Product.ProductPicture" class="form-control" />
+            <ValidationMessage For="@(() => Product.ProductPicture)" />
+        </div>
+        <label>Category: </label>
+        <div>
+            <InputSelect @bind-Value="Product.CategoryID" class="form-control">
+                <option value="">-- Select Category --</option>
+                @foreach (var category in Categories)
+                {
+                    <option value="@category.Id">@category.Name</option>
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => Product.CategoryID)" />
+        </div>
+        @* <label>Added By: </label>
+        <div>
+        <InputSelect @bind-Value="Product.UserID" class="form-control">
+        <option value="">-- Select User --</option>
+        @foreach (var user in Usernames)
+        {
+        <option value="@user.UserName">@user.UserName</option>
+        }
+        </InputSelect>
+        <ValidationMessage For="@(() => Product.UserID)" />
+        </div>
+        *@
+    </div>
+
+
+
+    <button type="submit" class="btn btn-success btn-block">
+        Create Product
+    </button>
+</EditForm>
+
+@code {
+    private Product Product { get; set; } = new Product();
+    private List<Category> Categories { get; set; } = new List<Category>();
+    //private List<User> Usernames { get; set; } = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Categories = await _client.GetFromJsonAsync<List<Category>>(Endpoints.CategoriesEndpoint);
+        //Usernames = await _client.GetFromJsonAsync<List<User>>(Endpoints.UsersEndpoint);
+    }
+
+    private async Task CreateProduct()
+    {
+        await _client.PostAsJsonAsync(Endpoints.ProductsEndpoint, Product);
+        _navManager.NavigateTo("/products/");
+    }
+}

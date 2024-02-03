@@ -12,8 +12,8 @@ using Swappy.Server.Data;
 namespace Swappy.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240203143811_validations_added")]
-    partial class validations_added
+    [Migration("20240203205102_newdb")]
+    partial class newdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -454,8 +454,8 @@ namespace Swappy.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 22, 38, 10, 861, DateTimeKind.Local).AddTicks(1538),
-                            DateUpdated = new DateTime(2024, 2, 3, 22, 38, 10, 861, DateTimeKind.Local).AddTicks(1539),
+                            DateCreated = new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(5045),
+                            DateUpdated = new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(5046),
                             Description = "Electronic gadgets and devices",
                             Name = "Electronics",
                             UpdatedBy = "System"
@@ -464,8 +464,8 @@ namespace Swappy.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 22, 38, 10, 861, DateTimeKind.Local).AddTicks(1540),
-                            DateUpdated = new DateTime(2024, 2, 3, 22, 38, 10, 861, DateTimeKind.Local).AddTicks(1541),
+                            DateCreated = new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(5048),
+                            DateUpdated = new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(5048),
                             Description = "Fashion and apparel",
                             Name = "Clothing",
                             UpdatedBy = "System"
@@ -564,8 +564,8 @@ namespace Swappy.Server.Migrations
                             Id = 1,
                             CategoryID = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 22, 38, 10, 861, DateTimeKind.Local).AddTicks(1741),
-                            DateUpdated = new DateTime(2024, 2, 3, 22, 38, 10, 861, DateTimeKind.Local).AddTicks(1741),
+                            DateCreated = new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(5240),
+                            DateUpdated = new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(5241),
                             Description = "Description",
                             Name = "Samsung S24 Ultra",
                             Price = 1500.0,
@@ -626,8 +626,8 @@ namespace Swappy.Server.Migrations
                             Id = 1,
                             Bio = "I am Star Boy",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 22, 38, 10, 861, DateTimeKind.Local).AddTicks(1229),
-                            DateUpdated = new DateTime(2024, 2, 3, 22, 38, 10, 861, DateTimeKind.Local).AddTicks(1237),
+                            DateCreated = new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(4679),
+                            DateUpdated = new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(4690),
                             Email = "starboy69@gmail.com",
                             Name = "Star Boy",
                             PhoneNumber = "1234567890",

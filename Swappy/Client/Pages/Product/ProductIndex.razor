@@ -6,6 +6,11 @@
 
 <h3>Products</h3>
 
+<a href="/products/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Product
+</a>
+
 
 @if (Products == null)
 {
@@ -23,7 +28,8 @@ else
                 <th>Dimension</th>
                 <th>Picture</th>
                 <th>Category</th>
-                <th>Added By</th>
+                @*                 <th>Added By</th>
+            *@
                 <th>Actions</th>
             </tr>
         </thead>
@@ -38,8 +44,8 @@ else
                     <td>@product.ProductDimension</td>
                     <td>@product.ProductPicture</td>
                     <td>@product.Category.Name</td>
-                    <td>@product.User.UserName</td>
-                    
+                    @*                     <td>@product.UserID</td> <!-- Display the username of the user who added the product -->
+            *@
                     <td>
                         <a href="/colours/view/@product.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
@@ -60,23 +66,22 @@ else
 @code {
     private List<Product>? Products;
 
-    protected async override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
         Products = await _client.GetFromJsonAsync<List<Product>>($"{Endpoints.ProductsEndpoint}");
     }
 
     async Task Delete(int productId)
     {
-        if(Products != null)
+        if (Products != null)
         {
             var product = Products.First(q => q.Id == productId);
             var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {product.Name}?");
-            if(confirm)
+            if (confirm)
             {
                 await _client.DeleteAsync($"{Endpoints.ProductsEndpoint}/{productId}");
                 await OnInitializedAsync();
             }
         }
     }
-
 }

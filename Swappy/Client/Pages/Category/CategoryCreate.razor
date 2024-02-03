@@ -3,7 +3,9 @@
 @inject NavigationManager _navManager
 
 <h3>Create new categories</h3>
+
 <br />
+<ProductFormComponent ButtonText="Create Product" product="product" OnValidSubmit="CreateProduct" />
 
 <EditForm Model="@category" OnValidSubmit="CreateCategory">
     <DataAnnotationsValidator />
