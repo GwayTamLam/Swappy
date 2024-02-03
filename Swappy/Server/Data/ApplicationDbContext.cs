@@ -38,11 +38,12 @@ namespace Swappy.Server.Data
             //builder.ApplyConfiguration(new OrderSeedConfiguration());
             //builder.ApplyConfiguration(new OrderItemsSeedConfiguration());
             //builder.ApplyConfiguration(new PaymentSeedConfiguration());
-            //builder.ApplyConfiguration(new ProductSeedConfiguration());
+            
 
             base.OnModelCreating(builder);
             builder.ApplyConfiguration(new UserSeedConfiguration());
             builder.ApplyConfiguration(new CategorySeedConfiguration());
+            builder.ApplyConfiguration(new ProductSeedConfiguration());
 
             builder.Entity<User>()
                 .HasMany(u => u.Products)
@@ -58,9 +59,9 @@ namespace Swappy.Server.Data
             builder.Entity<Category>()
                 .HasMany(c => c.Products)
                 .WithOne(p => p.Category)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.Restrict);
 
-            
+
             builder.Entity<Product>()
                 .HasMany(p => p.CartItems)
                 .WithOne(ci => ci.Product)
@@ -70,7 +71,12 @@ namespace Swappy.Server.Data
                 .HasOne(ci => ci.User)
                 .WithMany(u => u.CartItems)
                 .HasForeignKey(ci => ci.UserId)
-                .OnDelete(DeleteBehavior.Restrict); // Change to Restrict
+                .OnDelete(DeleteBehavior.Restrict); 
+
+            builder.Entity<Order>()
+                .Property(o => o.TotalAmount)
+                .HasPrecision(18, 2); 
+
 
 
 

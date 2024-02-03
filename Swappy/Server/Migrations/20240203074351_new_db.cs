@@ -263,7 +263,7 @@ namespace Swappy.Server.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserID = table.Column<int>(type: "int", nullable: false),
-                    TotalAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TotalAmount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -358,14 +358,19 @@ namespace Swappy.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Description", "Name", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7911), new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7912), "Electronic gadgets and devices", "Electronics", "System" },
-                    { 2, "System", new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7913), new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7914), "Fashion and apparel", "Clothing", "System" }
+                    { 1, "System", new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(3149), new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(3149), "Electronic gadgets and devices", "Electronics", "System" },
+                    { 2, "System", new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(3151), new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(3151), "Fashion and apparel", "Clothing", "System" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Bio", "CreatedBy", "DateCreated", "DateUpdated", "Email", "Name", "PhoneNumber", "UpdatedBy", "UserName" },
-                values: new object[] { 1, "I am Star Boy", "System", new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7607), new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7616), "starboy69@gmail.com", "Star Boy", "1234567890", "System", "starboy69" });
+                values: new object[] { 1, "I am Star Boy", "System", new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(2801), new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(2809), "starboy69@gmail.com", "Star Boy", "1234567890", "System", "starboy69" });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "CategoryID", "CreatedBy", "DateCreated", "DateUpdated", "Description", "Name", "Price", "ProductDimension", "ProductPicture", "Quantity", "UpdatedBy", "UserID" },
+                values: new object[] { 1, 1, "System", new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(3305), new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(3306), "Description", "Samsung S24 Ultra", 1500.0, "1x1x1", "Saumsung Phone.jpg", 1, "System", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

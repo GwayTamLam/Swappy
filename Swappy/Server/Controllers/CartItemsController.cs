@@ -37,7 +37,7 @@ namespace Swappy.Server.Controllers
             //}
             //  return await _context.CartItems.ToListAsync();
 
-            var cartitems = await _unitOfWork.CartItems.GetAll();
+            var cartitems = await _unitOfWork.CartItems.GetAll(includes: q=>q.Include(x=>x.User).Include(x=>x.Product).Include(x=>x.Order));
 
             if (cartitems == null)
             {

@@ -4,19 +4,21 @@
 @attribute [Authorize]
 
 
-<h3>Cart</h3>
+<h3>CartItems</h3>
+
 
 <a href="/cartitems/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
     Create New Cart Item
 
 </a>
+
 <br />
 <br />
 
 @if (CartItems == null)
 {
-    <div class="alert alert-info">Loading Cart Items...</div>
+    <div class="alert alert-info">Loading Products...</div>
 }
 else
 {
@@ -24,9 +26,11 @@ else
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Picture</th>
+                <th>Description</th>
                 <th>Price</th>
                 <th>Quantity</th>
+                <th>Picture</th>
+                <th>Chosen By</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -35,9 +39,11 @@ else
             {
                 <tr>
                     <td>@cartitem.Product.Name</td>
-                    <td>@cartitem.Product.ProductPicture</td>
+                    <td>@cartitem.Product.Description</td>
                     <td>@cartitem.Product.Price</td>
                     <td>@cartitem.Product.Quantity</td>
+                    <td>@cartitem.Product.ProductPicture</td>
+                    <td>@cartitem.User.UserName</td>
 
                     <td>
                         <a href="/colours/view/@cartitem.Id" class="btn btn-primary">
@@ -64,15 +70,15 @@ else
         CartItems = await _client.GetFromJsonAsync<List<CartItem>>($"{Endpoints.CartItemsEndpoint}");
     }
 
-    async Task Delete(int cartitemId)
+    async Task Delete(int cartitemid)
     {
         if (CartItems != null)
         {
-            var cartitem = CartItems.First(q => q.Id == cartitemId );
+            var cartitem = CartItems.First(q => q.Id == cartitemid);
             var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {cartitem.Product.Name}?");
             if (confirm)
             {
-                await _client.DeleteAsync($"{Endpoints.CartItemsEndpoint}/{cartitemId}");
+                await _client.DeleteAsync($"{Endpoints.CartItemsEndpoint}/{cartitemid}");
                 await OnInitializedAsync();
             }
         }

@@ -6,6 +6,7 @@
 
 <h3>Products</h3>
 
+
 @if (Products == null)
 {
     <div class="alert alert-info">Loading Products...</div>
@@ -22,6 +23,7 @@ else
                 <th>Dimension</th>
                 <th>Picture</th>
                 <th>Category</th>
+                <th>Added By</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -36,6 +38,7 @@ else
                     <td>@product.ProductDimension</td>
                     <td>@product.ProductPicture</td>
                     <td>@product.Category.Name</td>
+                    <td>@product.User.UserName</td>
                     
                     <td>
                         <a href="/colours/view/@product.Id" class="btn btn-primary">

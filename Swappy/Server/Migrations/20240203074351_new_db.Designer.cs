@@ -12,7 +12,7 @@ using Swappy.Server.Data;
 namespace Swappy.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240201042550_new_db")]
+    [Migration("20240203074351_new_db")]
     partial class new_db
     {
         /// <inheritdoc />
@@ -452,8 +452,8 @@ namespace Swappy.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7911),
-                            DateUpdated = new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7912),
+                            DateCreated = new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(3149),
+                            DateUpdated = new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(3149),
                             Description = "Electronic gadgets and devices",
                             Name = "Electronics",
                             UpdatedBy = "System"
@@ -462,8 +462,8 @@ namespace Swappy.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7913),
-                            DateUpdated = new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7914),
+                            DateCreated = new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(3151),
+                            DateUpdated = new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(3151),
                             Description = "Fashion and apparel",
                             Name = "Clothing",
                             UpdatedBy = "System"
@@ -488,6 +488,7 @@ namespace Swappy.Server.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("TotalAmount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UpdatedBy")
@@ -554,6 +555,24 @@ namespace Swappy.Server.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryID = 1,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(3305),
+                            DateUpdated = new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(3306),
+                            Description = "Description",
+                            Name = "Samsung S24 Ultra",
+                            Price = 1500.0,
+                            ProductDimension = "1x1x1",
+                            ProductPicture = "Saumsung Phone.jpg",
+                            Quantity = 1,
+                            UpdatedBy = "System",
+                            UserID = 1
+                        });
                 });
 
             modelBuilder.Entity("Swappy.Shared.Domain.User", b =>
@@ -601,8 +620,8 @@ namespace Swappy.Server.Migrations
                             Id = 1,
                             Bio = "I am Star Boy",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7607),
-                            DateUpdated = new DateTime(2024, 2, 1, 12, 25, 50, 859, DateTimeKind.Local).AddTicks(7616),
+                            DateCreated = new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(2801),
+                            DateUpdated = new DateTime(2024, 2, 3, 15, 43, 51, 703, DateTimeKind.Local).AddTicks(2809),
                             Email = "starboy69@gmail.com",
                             Name = "Star Boy",
                             PhoneNumber = "1234567890",
