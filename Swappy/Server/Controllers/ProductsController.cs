@@ -113,9 +113,16 @@ namespace Swappy.Server.Controllers
             //}
             //  _context.Products.Add(product);
             //  await _context.SaveChangesAsync();
+            try
+            {
+                product.UserID = 1;
+                await _unitOfWork.Products.Insert(product);
+                await _unitOfWork.Save(HttpContext);
+            }
+            catch (Exception ex)
+            {
 
-            await _unitOfWork.Products.Insert(product);
-            await _unitOfWork.Save(HttpContext);
+            }
 
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }

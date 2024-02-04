@@ -17,11 +17,9 @@ namespace Swappy.Shared.Domain
         public string? ProductPicture { get; set; }
         public virtual User? User { get; set; }
         [Required]
-
         public int UserID { get; set; }
         public virtual Category? Category { get; set; }
         [Required]
-
         public int CategoryID { get; set; }
         public virtual ICollection<CartItem>? CartItems { get; set; }
     }

@@ -10,6 +10,7 @@
     [Parameter] public int id { get; set; }
     Product? product = new Product();
 
+
     protected override async Task OnParametersSetAsync()
     {
         product = await _client.GetFromJsonAsync<Product>($"{Endpoints.ProductsEndpoint}/{id}");

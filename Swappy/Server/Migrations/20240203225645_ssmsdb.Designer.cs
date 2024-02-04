@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Swappy.Server.Data;
 
@@ -11,9 +12,11 @@ using Swappy.Server.Data;
 namespace Swappy.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240203225645_ssmsdb")]
+    partial class ssmsdb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -451,8 +454,8 @@ namespace Swappy.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 58, 52, 539, DateTimeKind.Local).AddTicks(9838),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 58, 52, 539, DateTimeKind.Local).AddTicks(9839),
+                            DateCreated = new DateTime(2024, 2, 4, 6, 56, 45, 691, DateTimeKind.Local).AddTicks(3828),
+                            DateUpdated = new DateTime(2024, 2, 4, 6, 56, 45, 691, DateTimeKind.Local).AddTicks(3829),
                             Description = "Electronic gadgets and devices",
                             Name = "Electronics",
                             UpdatedBy = "System"
@@ -461,8 +464,8 @@ namespace Swappy.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 58, 52, 539, DateTimeKind.Local).AddTicks(9842),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 58, 52, 539, DateTimeKind.Local).AddTicks(9842),
+                            DateCreated = new DateTime(2024, 2, 4, 6, 56, 45, 691, DateTimeKind.Local).AddTicks(3832),
+                            DateUpdated = new DateTime(2024, 2, 4, 6, 56, 45, 691, DateTimeKind.Local).AddTicks(3832),
                             Description = "Fashion and apparel",
                             Name = "Clothing",
                             UpdatedBy = "System"
@@ -561,8 +564,8 @@ namespace Swappy.Server.Migrations
                             Id = 1,
                             CategoryID = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 58, 52, 540, DateTimeKind.Local).AddTicks(196),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 58, 52, 540, DateTimeKind.Local).AddTicks(197),
+                            DateCreated = new DateTime(2024, 2, 4, 6, 56, 45, 691, DateTimeKind.Local).AddTicks(4130),
+                            DateUpdated = new DateTime(2024, 2, 4, 6, 56, 45, 691, DateTimeKind.Local).AddTicks(4131),
                             Description = "Description",
                             Name = "Samsung S24 Ultra",
                             Price = 1500.0,
@@ -623,8 +626,8 @@ namespace Swappy.Server.Migrations
                             Id = 1,
                             Bio = "I am Star Boy",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 58, 52, 539, DateTimeKind.Local).AddTicks(9289),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 58, 52, 539, DateTimeKind.Local).AddTicks(9300),
+                            DateCreated = new DateTime(2024, 2, 4, 6, 56, 45, 691, DateTimeKind.Local).AddTicks(3331),
+                            DateUpdated = new DateTime(2024, 2, 4, 6, 56, 45, 691, DateTimeKind.Local).AddTicks(3341),
                             Email = "starboy69@gmail.com",
                             Name = "Star Boy",
                             PhoneNumber = "1234567890",

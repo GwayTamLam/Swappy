@@ -47,10 +47,10 @@ else
                     @*                     <td>@product.UserID</td> <!-- Display the username of the user who added the product -->
             *@
                     <td>
-                        <a href="/colours/view/@product.Id" class="btn btn-primary">
+                        <a href="/products/view/@product.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
                         </a>
-                        <a href="/colours/edit/@product.Id" class="btn btn-warning">
+                        <a href="/categories/edit/@product.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
                         </a>
                         <button class="btn btn-danger" @onclick="@(()=>Delete(product.Id))">

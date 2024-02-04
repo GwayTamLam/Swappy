@@ -1,63 +1,63 @@
 ﻿@inject HttpClient _client
 
-<h3>ProductFormComponent</h3>
+<h3>View product</h3>
 
-<EditForm Model="@Product" OnValidSubmit=@OnValidSubmit>
+<EditForm Model="@product" OnValidSubmit=@OnValidSubmit>
     <DataAnnotationsValidator />
     <ValidationSummary />
     <fieldset disabled="@Disabled" >
         <div class="form-group">
             <label>Name: </label>
             <div>
-                <InputText @bind-Value="Product.Name" class="form-control" />
-                <ValidationMessage For="@(() => Product.Name)" />
+                <InputText @bind-Value="product.Name" class="form-control" />
+                <ValidationMessage For="@(() => product.Name)" />
             </div>
             <label>Description: </label>
             <div>
-                <InputText @bind-Value="Product.Description" class="form-control" />
-                <ValidationMessage For="@(() => Product.Description)" />
+                <InputText @bind-Value="product.Description" class="form-control" />
+                <ValidationMessage For="@(() => product.Description)" />
             </div>
             <label>Price: </label>
             <div>
-                <InputNumber @bind-Value="Product.Price" class="form-control" />
-                <ValidationMessage For="@(() => Product.Price)" />
+                <InputNumber @bind-Value="product.Price" class="form-control" />
+                <ValidationMessage For="@(() => product.Price)" />
             </div>
             <label>Quantity: </label>
             <div>
-                <InputNumber @bind-Value="Product.Quantity" class="form-control" />
-                <ValidationMessage For="@(() => Product.Quantity)" />
+                <InputNumber @bind-Value="product.Quantity" class="form-control" />
+                <ValidationMessage For="@(() => product.Quantity)" />
             </div>
             <label>Dimension: </label>
             <div>
-                <InputText @bind-Value="Product.ProductDimension" class="form-control" />
-                <ValidationMessage For="@(() => Product.ProductDimension)" />
+                <InputText @bind-Value="product.ProductDimension" class="form-control" />
+                <ValidationMessage For="@(() => product.ProductDimension)" />
             </div>
             <label>Picture: </label>
             <div>
-                <InputText @bind-Value="Product.ProductPicture" class="form-control" />
-                <ValidationMessage For="@(() => Product.ProductPicture)" />
+                <InputText @bind-Value="product.ProductPicture" class="form-control" />
+                <ValidationMessage For="@(() => product.ProductPicture)" />
             </div>
             <label>Category: </label>
             <div>
-                <InputSelect @bind-Value="Product.CategoryID" class="form-control">
+                <InputSelect @bind-Value="product.CategoryID" class="form-control">
                     <option value="">-- Select Category --</option>
                     @foreach (var category in Categories)
                     {
                         <option value="@category.Id">@category.Name</option>
                     }
                 </InputSelect>
-                <ValidationMessage For="@(() => Product.CategoryID)" />
+                <ValidationMessage For="@(() => product.CategoryID)" />
             </div>
             @* <label>Added By: </label>
             <div>
-            <InputSelect @bind-Value="Product.UserID" class="form-control">
+            <InputSelect @bind-Value="product.UserID" class="form-control">
             <option value="">-- Select User --</option>
             @foreach (var user in Usernames)
             {
             <option value="@user.UserName">@user.UserName</option>
             }
             </InputSelect>
-            <ValidationMessage For="@(() => Product.UserID)" />
+            <ValidationMessage For="@(() => product.UserID)" />
             </div>
             *@
         </div>
@@ -78,7 +78,7 @@
 
 @code {
     [Parameter] public bool Disabled { get; set; } = false;
-    [Parameter] public Product? Product { get; set; }
+    [Parameter] public Product? product { get; set; }
     [Parameter] public string ButtonText { get; set; } = "Save";
     [Parameter] public EventCallback OnValidSubmit { get; set; }
 
