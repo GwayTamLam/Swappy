@@ -1,98 +1,53 @@
 ﻿@inject NavigationManager Navigation
-
-<div class="top-row ps-3 navbar navbar-dark">
+<link rel="stylesheet" href="~/css/app.css">
+ ﻿<nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color: #A3B18A;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">Swappy</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+        <a class="navbar-brand" href="">SWAPPY</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    </div>
-</div>
-
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <AuthorizeView>
-            <Authorized>
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="authentication/profile" Match="NavLinkMatch.All">
-                        <span class="oi oi-person" aria-hidden="true"></span> Hello, @context.User.Identity?.Name!
-                    </NavLink>
-                </div>
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="#" @onclick="BeginLogOut" Match="NavLinkMatch.All">
-                        <span class="oi oi-account-logout" aria-hidden="true"></span> Log out
-                    </NavLink>
-                </div>
-
-            </Authorized>
-            <NotAuthorized>
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="authentication/register" Match="NavLinkMatch.All">
-                        <span class="oi oi-person" aria-hidden="true"></span> Register
-                    </NavLink>
-                </div>
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="authentication/login" Match="NavLinkMatch.All">
-                        <span class="oi oi-account-login" aria-hidden="true"></span> Log in
-                    </NavLink>
-                </div>
-            </NotAuthorized>
-        </AuthorizeView>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav w-100 justify-content-between mb-2 mb-md-0">
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="users"><span class="oi oi-people"></span>User</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="categories"><span class="oi oi-grid-four-up"></span>Categories</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="products"><span class="oi oi-basket"></span>Products</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="cartitems"><span class="oi oi-cart"></span>Cart</NavLink>
+                </li>
+                <AuthorizeView>
+                    <Authorized>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="authentication/profile">Hello, @context.User.Identity?.Name!</NavLink>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link btn btn-link" @onclick="BeginLogOut">Log out</button>
+                            </li>
+                        </Authorized>
+                        <NotAuthorized>
+                            <li class="nav-item">
+                                <NavLink class="nav-link" href="authentication/register">Register</NavLink>
+                            </li>
+                            <li class="nav-item">
+                                <NavLink class="nav-link" href="authentication/login">Log in</NavLink>
+                            </li>
+                        </NotAuthorized>
+                    </AuthorizeView>
+                </ul>
+            </div>
         </div>
-        
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="users">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Users
-            </NavLink>
-        </div>
-
-        @* <div class="nav-item px-3">
-            <NavLink class="nav-link" href="message">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Message
-            </NavLink>
-        </div> *@
-
-        @* <div class="nav-item px-3">
-            <NavLink class="nav-link" href="about">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> About
-            </NavLink>
-        </div> *@
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="categories">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Categories
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="products">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Products
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="cartitems">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Cart 
-            </NavLink>
-        </div>
-
-        @* <div class="nav-item px-3">
-            <NavLink class="nav-link" href="orders">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Orders
-            </NavLink>
-        </div> *@
     </nav>
-</div>
 
 @code {
     private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? NavBarCssClass => collapseNavMenu ? null : "show";
+    private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
 
     private void ToggleNavMenu()
     {

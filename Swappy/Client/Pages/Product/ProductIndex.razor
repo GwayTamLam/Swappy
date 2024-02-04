@@ -48,13 +48,13 @@ else
             *@
                     <td>
                         <a href="/products/view/@product.Id" class="btn btn-primary">
-                            <span class="oi oi-book"></span>
+                            <span class="oi oi-eye"></span>
                         </a>
                         <a href="/categories/edit/@product.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
                         </a>
                         <button class="btn btn-danger" @onclick="@(()=>Delete(product.Id))">
-                            <span class="oi oi-delete"></span>
+                            <span class="oi oi-trash"></span>
                         </button>
                     </td>
                 </tr>

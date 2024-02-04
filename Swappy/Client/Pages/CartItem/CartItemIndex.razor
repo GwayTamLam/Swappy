@@ -16,7 +16,7 @@
 
 <br />
 <br />
-
+<h5>Filter by:</h5>
 <select @onchange="OnUserSelected">
     <option value="">All Users</option>
     @if (Users != null)
@@ -62,13 +62,13 @@ else
 
                     <td>
                         <a href="/cartitems/view/@cartitem.Id" class="btn btn-primary">
-                            <span class="oi oi-book"></span>
+                            <span class="oi oi-eye"></span>
                         </a>
                         <a href="/cartitems/edit/@cartitem.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
                         </a>
                         <button class="btn btn-danger" @onclick="@(()=>Delete(cartitem.Id))">
-                            <span class="oi oi-delete"></span>
+                            <span class="oi oi-trash"></span>
                         </button>
                     </td>
                 </tr>

@@ -13,9 +13,9 @@ namespace Swappy.Server.Configurations.Entities
                 {
                     Id = 1,
                     Name = "Star Boy",
-                    UserName = "starboy69",
-                    Email = "starboy69@gmail.com",
-                    PhoneNumber = "1234567890",
+                    UserName = "starboy",
+                    Email = "starboy@gmail.com",
+                    PhoneNumber = "12345678",
                     Bio = "I am Star Boy",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
