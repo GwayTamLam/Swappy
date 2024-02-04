@@ -1,10 +1,18 @@
-﻿<h3>UserFormComponent</h3>
+﻿@inject IJSRuntime JSRuntime;
+
+<h3>UserFormComponent</h3>
 
 <EditForm Model="@user" OnValidSubmit="@OnValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <fieldset disabled="@Disabled">
     <div class="form-group">
+        <label for="profilePicture">Profile Picture:</label>
+        <div class="form-group">
+            <InputFile OnChange="@OnInputFileChange" accept="image/jpeg, image/png" class="form-control" />
+            <ValidationMessage For="@(() => user.ProfilePicture)" />
+        </div>
+
         <label>Name: </label>
         <div>
             <InputText @bind-Value="user.Name" class="form-control" />
@@ -47,4 +55,50 @@
     [Parameter] public User? user { get; set; }
     [Parameter] public string ButtonText { get; set; } = "Save";
     [Parameter] public EventCallback OnValidSubmit { get; set; }
+    private async Task OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file != null)
+        {
+            // Check if the file type is JPEG or PNG
+            if (file.ContentType.ToLower() != "image/jpeg" && file.ContentType.ToLower() != "image/png")
+            {
+                // Handle unsupported file type
+                return;
+            }
+
+            if (file.Size > 10000000) // Example size check
+            {
+                // Handle file too large
+                return;
+            }
+
+            using (var memoryStream = new MemoryStream())
+            {
+                await file.OpenReadStream(maxAllowedSize: 1000000).CopyToAsync(memoryStream);
+                memoryStream.Position = 0; // Reset the position to read from the beginning
+
+                using (var image = SixLabors.ImageSharp.Image.Load(memoryStream))
+                {
+                    // Resize the image to 100x100 pixels
+                    image.Mutate(x => x.Resize(100, 100));
+
+                    // Save the resized image to a new MemoryStream
+                    var resizedStream = new MemoryStream();
+                    if (file.ContentType.ToLower() == "image/jpeg")
+                    {
+                        await image.SaveAsJpegAsync(resizedStream);
+                    }
+                    else if (file.ContentType.ToLower() == "image/png")
+                    {
+                        await image.SaveAsPngAsync(resizedStream);
+                    }
+
+                    resizedStream.Position = 0; // Reset the position to read from the beginning
+                    user.ProfilePicture = resizedStream.ToArray();
+                }
+            }
+        }
+    }
+
 }

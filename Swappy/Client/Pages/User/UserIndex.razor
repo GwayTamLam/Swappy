@@ -25,6 +25,7 @@ else
     <table class="table table-reponsive" id="usersTable">
         <thead>
             <tr>
+                <th>Profile Picture</th>
                 <th>Name</th>
                 <th>Username</th>
                 <th>Email</th>
@@ -37,6 +38,17 @@ else
             @foreach (var user in Users)
             {
                 <tr>
+                    <td>
+                        @if (user.ProfilePicture != null)
+                        {
+                            <img src="@($"data:image/jpeg;base64,{Convert.ToBase64String(user.ProfilePicture)}")" alt="Product Picture" />
+                        }
+                        else
+                        {
+                            <img src="https://static.thenounproject.com/png/354384-200.png" style="width:100px;height:100px"/>
+                        }
+
+                    </td>
                     <td>@user.Name</td>
                     <td>@user.UserName</td>
                     <td>@user.Email</td>

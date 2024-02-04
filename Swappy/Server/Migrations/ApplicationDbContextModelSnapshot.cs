@@ -451,8 +451,8 @@ namespace Swappy.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 58, 52, 539, DateTimeKind.Local).AddTicks(9838),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 58, 52, 539, DateTimeKind.Local).AddTicks(9839),
+                            DateCreated = new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1797),
+                            DateUpdated = new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1798),
                             Description = "Electronic gadgets and devices",
                             Name = "Electronics",
                             UpdatedBy = "System"
@@ -461,8 +461,8 @@ namespace Swappy.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 58, 52, 539, DateTimeKind.Local).AddTicks(9842),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 58, 52, 539, DateTimeKind.Local).AddTicks(9842),
+                            DateCreated = new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1799),
+                            DateUpdated = new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1800),
                             Description = "Fashion and apparel",
                             Name = "Clothing",
                             UpdatedBy = "System"
@@ -561,8 +561,8 @@ namespace Swappy.Server.Migrations
                             Id = 1,
                             CategoryID = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 58, 52, 540, DateTimeKind.Local).AddTicks(196),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 58, 52, 540, DateTimeKind.Local).AddTicks(197),
+                            DateCreated = new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1970),
+                            DateUpdated = new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1971),
                             Description = "Description",
                             Name = "Samsung S24 Ultra",
                             Price = 1500.0,
@@ -606,6 +606,9 @@ namespace Swappy.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -623,8 +626,8 @@ namespace Swappy.Server.Migrations
                             Id = 1,
                             Bio = "I am Star Boy",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 4, 6, 58, 52, 539, DateTimeKind.Local).AddTicks(9289),
-                            DateUpdated = new DateTime(2024, 2, 4, 6, 58, 52, 539, DateTimeKind.Local).AddTicks(9300),
+                            DateCreated = new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1440),
+                            DateUpdated = new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1448),
                             Email = "starboy69@gmail.com",
                             Name = "Star Boy",
                             PhoneNumber = "1234567890",

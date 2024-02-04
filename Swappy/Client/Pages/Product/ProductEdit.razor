@@ -36,10 +36,10 @@
             <ValidationMessage For="@(() => Product.ProductDimension)" />
         </div>
         <label>Picture: </label>
-        <div>
+        @* <div>
             <InputText @bind-Value="Product.ProductPicture" class="form-control" />
             <ValidationMessage For="@(() => Product.ProductPicture)" />
-        </div>
+        </div> *@
         <label>Category: </label>
         <div>
             <InputSelect @bind-Value="Product.CategoryID" class="form-control">

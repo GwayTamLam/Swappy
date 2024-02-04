@@ -20,6 +20,7 @@ namespace Swappy.Shared.Domain
         [RegularExpression(@"^\d{8}$", ErrorMessage = "Phone number must be 8 numeric characters")]
         public string? PhoneNumber { get; set; }
         public string? Bio { get; set;}
+        public byte[]? ProfilePicture { get; set;}
 
         public virtual ICollection<Product>? Products { get; set;}
         public virtual ICollection<CartItem>? CartItems { get; set; }

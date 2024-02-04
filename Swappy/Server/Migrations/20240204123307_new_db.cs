@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Swappy.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class newdb : Migration
+    public partial class new_db : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -140,6 +140,7 @@ namespace Swappy.Server.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Bio = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProfilePicture = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -358,19 +359,19 @@ namespace Swappy.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Description", "Name", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(5045), new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(5046), "Electronic gadgets and devices", "Electronics", "System" },
-                    { 2, "System", new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(5048), new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(5048), "Fashion and apparel", "Clothing", "System" }
+                    { 1, "System", new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1797), new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1798), "Electronic gadgets and devices", "Electronics", "System" },
+                    { 2, "System", new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1799), new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1800), "Fashion and apparel", "Clothing", "System" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Bio", "CreatedBy", "DateCreated", "DateUpdated", "Email", "Name", "PhoneNumber", "UpdatedBy", "UserName" },
-                values: new object[] { 1, "I am Star Boy", "System", new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(4679), new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(4690), "starboy69@gmail.com", "Star Boy", "1234567890", "System", "starboy69" });
+                columns: new[] { "Id", "Bio", "CreatedBy", "DateCreated", "DateUpdated", "Email", "Name", "PhoneNumber", "ProfilePicture", "UpdatedBy", "UserName" },
+                values: new object[] { 1, "I am Star Boy", "System", new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1440), new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1448), "starboy69@gmail.com", "Star Boy", "1234567890", null, "System", "starboy69" });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "CategoryID", "CreatedBy", "DateCreated", "DateUpdated", "Description", "Name", "Price", "ProductDimension", "ProductPicture", "Quantity", "UpdatedBy", "UserID" },
-                values: new object[] { 1, 1, "System", new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(5240), new DateTime(2024, 2, 4, 4, 51, 2, 207, DateTimeKind.Local).AddTicks(5241), "Description", "Samsung S24 Ultra", 1500.0, "1x1x1", "Saumsung Phone.jpg", 1, "System", 1 });
+                values: new object[] { 1, 1, "System", new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1970), new DateTime(2024, 2, 4, 20, 33, 7, 620, DateTimeKind.Local).AddTicks(1971), "Description", "Samsung S24 Ultra", 1500.0, "1x1x1", "Saumsung Phone.jpg", 1, "System", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
